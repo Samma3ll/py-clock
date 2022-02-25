@@ -31,8 +31,7 @@ void setup() {
   // FastLED
   FastLED.addLeds<NEOPIXEL, LED_DATA_PIN>(leds, NUM_LEDS);
   FastLED.setBrightness(BRIGHTNESS);
-  FastLED.clear();
-  FastLED.show();
+  FastLED.clear(true);
 }
 
 void setLED() {
@@ -117,24 +116,24 @@ void serial() {
     int S_ones;
     int S_tens;
 
-    H_ones=n3%10;
+    S_ones=n3%10;
     n3=n3/10;
-    H_tens=n3%10;
+    S_tens=n3%10;
 
     M_ones=n2%10;
     n2=n2/10;
     M_tens=n2%10;
 
-    S_ones=n1%10;
+    H_ones=n1%10;
     n1=n1/10;
-    S_tens=n1%10;
+    H_tens=n1%10;
 
-    lc.setDigit(0,7,(byte)S_tens,false);
-    lc.setDigit(0,6,(byte)S_ones,true);
-    lc.setDigit(0,5,(byte)M_tens,false);
-    lc.setDigit(0,4,(byte)M_ones,true);
-    lc.setDigit(0,3,(byte)H_tens,false);
-    lc.setDigit(0,2,(byte)H_ones,false);
+    lc.setDigit(0,6,(byte)H_tens,false);
+    lc.setDigit(0,5,(byte)H_ones,true);
+    lc.setDigit(0,4,(byte)M_tens,false);
+    lc.setDigit(0,3,(byte)M_ones,true);
+    lc.setDigit(0,2,(byte)S_tens,false);
+    lc.setDigit(0,1,(byte)S_ones,false);
     //lc.setDigit(0,6,n2,false);
   readString="";
 }
